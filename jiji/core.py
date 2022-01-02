@@ -47,8 +47,10 @@ def build_workbook(jira_issue_json, query):
     for index, issue in enumerate(jira_issue_json['issues']):
         sheet.write(index, 0, issue["key"])
         sheet.write(index, 1, issue["fields"]["summary"])
-        sheet.write(index, 2, issue["fields"][query.start_date_field])
-        sheet.write(index, 3, issue["fields"][query.end_date_field])
+        if query.start_date_field in issue["fields"]:
+            sheet.write(index, 2, issue["fields"][query.start_date_field])
+        if query.end_date_field in issue["fields"]:
+            sheet.write(index, 3, issue["fields"][query.end_date_field])
 
     workbook.close()
     print(f'Total {num_issues} issues fetched. A workbook has been created at {Path(query.dest).resolve()}')
