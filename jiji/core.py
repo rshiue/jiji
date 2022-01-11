@@ -5,7 +5,7 @@ from typing import Dict
 
 import xlsxwriter
 
-from client import JiraQuery
+from .client import JiraQuery
 
 
 def main():

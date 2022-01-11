@@ -1,5 +1,5 @@
 def main():
-    from core import main
+    from jiji.core import main
     return main()
 
 

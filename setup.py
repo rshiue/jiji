@@ -21,14 +21,12 @@ AUTHOR = 'Robert Shiue'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
 
-# What packages are required for this module to be executed?
 REQUIRED = [
-    # 'requests', 'maya', 'records',
+    'requests~=2.22.0',
+    'XlsxWriter==3.0.2',
 ]
 
-# What packages are optional?
 EXTRAS = {
-    # 'fancy feature': ['django'],
 }
 
 # The rest you shouldn't have to touch too much :)
