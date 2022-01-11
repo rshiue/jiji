@@ -1,6 +1,7 @@
 import argparse
 import os
 from pathlib import Path
+from textwrap import dedent
 from typing import Dict
 
 import xlsxwriter
@@ -9,7 +10,30 @@ from .client import JiraQuery
 
 
 def main():
-    parser = argparse.ArgumentParser(description='jiji parameters usage and examples.')
+    parser = argparse.ArgumentParser(
+        description='jiji parameters usage and examples.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=dedent("""
+        
+        I hope this tool can save your time on querying Jira issues, 
+        filling them in an Excel file, and sending your boss.
+        
+        Example
+        -------
+        
+        $ jiji --query "project in (ABC, EDF) AND status in (Open, \\"InProgress\\")" 
+            --username [USERNAME] --password [SECRET] --host https://company.com/rest/api/2/search 
+            --start_date_field customfield_NNNN --end_date_field customfield_MMMM --dest issues.xlsx
+        
+        Bugs
+        ----
+        
+        Please raise issues here. Thank you.
+        
+            https://github.com/rshiue/jiji/issues
+        
+        """))
+
     parser.add_argument('--query', required=True, help='The JQL sent to the Jira server')
     parser.add_argument('--username', required=True, help='The username for the Jira server')
     parser.add_argument('--password', required=True, help='The password for the Jira server')
